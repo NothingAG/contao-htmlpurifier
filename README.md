@@ -8,7 +8,7 @@ Implements the [HTMLPurifier](http://htmlpurifier.org/) filter library into Cont
 ### Installation
 1. Copy the _plugins_ and _system_ folder into the root folder from Contao
 2. Update the database (e.g. with the _Extension manager_)
-3. Configure the HTMLPurifier in the backend from Contao (backend module below _System_)
+3. Configure the HTML Purifier in the backend from Contao (backend module below _System_)
 4. Apply the HTML Purifier configuration to your user groups
 
 ## VERSION HISTORY
