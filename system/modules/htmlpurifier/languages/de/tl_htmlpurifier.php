@@ -1,56 +1,44 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
- * TYPOlight Open Source CMS
- * Copyright (C) 2005-2010 Leo Feyer
+ * Contao Open Source CMS
  *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
+ * Copyright (C) 2005-2013 Leo Feyer
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
- * PHP version 5
- * @copyright  Nothing Interactive 2012 <https://www.nothing.ch/>
- * @author     Andreas Schempp <andreas@schempp.ch>
- * @author     Stefan Pfister <red@nothing.ch>
- * @license    http://opensource.org/licenses/lgpl-3.0.html
+ * @package News
+ * @link    https://contao.org
+ * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
+/**
+ * HTML Purifier Contao Extension
+ *
+ * @copyright  Nothing interactive 2013  <https://www.nothing.ch/>
+ * @author     Andreas Schempp <andreas@schempp.ch>
+ * @author     Stefan Pfister <red@nothing.ch>
+ * @author     Patrick Fiaux <nodz@nothing.ch>
+ * @license    http://opensource.org/licenses/lgpl-3.0.html
+ */
 
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_htmlpurifier']['name'] = array('Name', 'Bitte geben Sie einen Namen ein.');
-$GLOBALS['TL_LANG']['tl_htmlpurifier']['fallback'] = array(
-	'Standardkonfiguration', 'Diese Konfiguration als Standard verwenden.'
-);
+$GLOBALS['TL_LANG']['tl_htmlpurifier']['name']			= array('Name', 'Bitte geben Sie einen Namen ein.');
+$GLOBALS['TL_LANG']['tl_htmlpurifier']['fallback']		= array('Standardkonfiguration', 'Diese Konfiguration als Standard verwenden.');
 
 
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_htmlpurifier']['new'] = array(
-	'Neue Konfiguration', 'Erstellen Sie eine neue Konfiguration für HTMLPurifier'
-);
-$GLOBALS['TL_LANG']['tl_htmlpurifier']['edit'] = array('Konfiguration bearbeiten', 'Konfiguration ID %s bearbeiten');
-$GLOBALS['TL_LANG']['tl_htmlpurifier']['copy'] = array('Konfiguration kopieren', 'Konfiguration ID %s kopieren');
-$GLOBALS['TL_LANG']['tl_htmlpurifier']['delete'] = array('Konfiguration löschen', 'Konfiguration ID %s löschen');
-$GLOBALS['TL_LANG']['tl_htmlpurifier']['show'] = array(
-	'Konfigurationsdetails', 'Details der Konfiguration ID %s anzeigen'
-);
+$GLOBALS['TL_LANG']['tl_htmlpurifier']['new']				= array('Neue Konfiguration', 'Erstellen Sie eine neue Konfiguration für HTMLPurifier');
+$GLOBALS['TL_LANG']['tl_htmlpurifier']['edit']				= array('Konfiguration bearbeiten', 'Konfiguration ID %s bearbeiten');
+$GLOBALS['TL_LANG']['tl_htmlpurifier']['copy']				= array('Konfiguration kopieren', 'Konfiguration ID %s kopieren');
+$GLOBALS['TL_LANG']['tl_htmlpurifier']['delete']			= array('Konfiguration löschen', 'Konfiguration ID %s löschen');
+$GLOBALS['TL_LANG']['tl_htmlpurifier']['show']				= array('Konfigurationsdetails', 'Details der Konfiguration ID %s anzeigen');
 
 
 /**
  * Legends
  */
-$GLOBALS['TL_LANG']['tl_htmlpurifier']['name_legend'] = 'Name';
+$GLOBALS['TL_LANG']['tl_htmlpurifier']['name_legend']		= 'Name';
 

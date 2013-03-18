@@ -2,10 +2,10 @@
 
 /**
  * Contao Open Source CMS
- *
+ * 
  * Copyright (C) 2005-2013 Leo Feyer
- *
- * @package News
+ * 
+ * @package Comments
  * @link    https://contao.org
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
@@ -21,7 +21,14 @@
  */
 
 /**
- * Fields
+ * Register the classes
  */
-$GLOBALS['TL_LANG']['tl_user_group']['htmlpurifier'] = array('HTMLPurifier configuration', 'You can select a custom HTMLPurifier configuration for this group.');
+ClassLoader::addClasses(array
+(
+    // Classes
+    'Contao\HTMLPurifierHelper'   => 'system/modules/htmlpurifier/classes/HTMLPurifierHelper.php',
 
+    // Models
+    'Contao\HTMLPurifierModel'    => 'system/modules/htmlpurifier/models/HTMLPurifierModel.php',
+
+));

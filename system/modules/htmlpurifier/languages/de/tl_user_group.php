@@ -23,5 +23,5 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_user_group']['htmlpurifier'] = array('HTMLPurifier configuration', 'You can select a custom HTMLPurifier configuration for this group.');
+$GLOBALS['TL_LANG']['tl_user_group']['htmlpurifier'] = array('HTMLPurifier configuration', 'You can select a custom HTMLPurifier configuration for this group.'); //TRANSLATE
 

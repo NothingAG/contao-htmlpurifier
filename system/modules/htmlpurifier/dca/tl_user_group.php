@@ -1,35 +1,33 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
- * TYPOlight Open Source CMS
- * Copyright (C) 2005-2010 Leo Feyer
+ * Contao Open Source CMS
  *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
+ * Copyright (C) 2005-2013 Leo Feyer
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
- * PHP version 5
- * @copyright  Nothing Interactive 2012 <https://www.nothing.ch/>
- * @author     Andreas Schempp <andreas@schempp.ch>
- * @author     Stefan Pfister <red@nothing.ch>
- * @license    http://opensource.org/licenses/lgpl-3.0.html
+ * @package News
+ * @link    https://contao.org
+ * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
+/**
+ * HTML Purifier Contao Extension
+ *
+ * @copyright  Nothing interactive 2013  <https://www.nothing.ch/>
+ * @author     Andreas Schempp <andreas@schempp.ch>
+ * @author     Stefan Pfister <red@nothing.ch>
+ * @author     Patrick Fiaux <nodz@nothing.ch>
+ * @license    http://opensource.org/licenses/lgpl-3.0.html
+ */
 
 /**
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_user_group']['palettes']['default'] = preg_replace('@([,;])(alexf[,;])@', '$1htmlpurifier,$2', $GLOBALS['TL_DCA']['tl_user_group']['palettes']['default']);
+$GLOBALS['TL_DCA']['tl_user_group']['palettes']['default'] = preg_replace(
+    '@([,;])(alexf[,;])@',
+    '$1htmlpurifier,$2',
+    $GLOBALS['TL_DCA']['tl_user_group']['palettes']['default']
+);
 
 
 /**
@@ -37,10 +35,11 @@ $GLOBALS['TL_DCA']['tl_user_group']['palettes']['default'] = preg_replace('@([,;
  */
 $GLOBALS['TL_DCA']['tl_user_group']['fields']['htmlpurifier'] = array
 (
-	'label'                    => &$GLOBALS['TL_LANG']['tl_user_group']['htmlpurifier'],
-	'exclude'                  => true,
-	'inputType'                => 'select',
-	'foreignKey'               => 'tl_htmlpurifier.name',
-	'eval'                     => array('includeBlankOption'=>true, 'tl_class' =>'clr'),
+	'label'					=> &$GLOBALS['TL_LANG']['tl_user_group']['htmlpurifier'],
+	'exclude'				=> true,
+	'inputType'				=> 'select',
+	'foreignKey'			=> 'tl_htmlpurifier.name',
+	'eval'					=> array('includeBlankOption'=>true, 'tl_class'=>'clr'),
+    'sql'                   => "int(10) unsigned NOT NULL default '0'"
 );
 
