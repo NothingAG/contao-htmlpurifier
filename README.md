@@ -14,7 +14,7 @@ This extension implements the [HTML Purifier](http://htmlpurifier.org/) PHP libr
 4. Apply the [HTML Purifier](http://htmlpurifier.org/) configuration to your user groups (Users|User groups >Edit >Allowed fields >HTMLPurifier configuration)
 
 ### Known Issues
-1. HTML Purifier Removes target="_blank" attributes despite the configuration telling it not to.
+1. HTML Purifier removes target="_blank" attributes if you set the document type to XHTML 1.0 Strict. If you need the link target, please switch to XHTML 1.0 Transitional.
 
 ## VERSION HISTORY
 ### 2.0.0 (2013-03-14)
