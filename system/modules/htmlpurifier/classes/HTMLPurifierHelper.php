@@ -34,23 +34,23 @@ if (!class_exists('HTMLPurifier', false))
  */
 class HTMLPurifierHelper extends \Backend
 {
-	
+
 	/**
 	 * Current object instance (Singleton)
 	 * @var object
 	 */
 	protected static $objInstance;
-	
+
 	/**
 	 * HTMLPurifier instance
 	 */
 	protected $objPurifier;
-	
+
 	/**
 	 * TinyMCE override
 	 */
 	protected $rte = '';
-	
+
 
 	/**
 	 * Prevent direct instantiation (Singleton)
@@ -85,7 +85,7 @@ class HTMLPurifierHelper extends \Backend
 		return self::$objInstance;
 	}
 
-	
+
 	/**
 	 * Clean a string.
 	 *
@@ -96,24 +96,24 @@ class HTMLPurifierHelper extends \Backend
 		if (is_string($varValue))
 		{
 			$tags = preg_split('/{{([^}]+)}}/', $varValue, -1, PREG_SPLIT_DELIM_CAPTURE);
-			
+
 			$varValue = '';
 			$arrTags = array();
-	
+
 			for($_rit=0; $_rit<count($tags); $_rit=$_rit+2)
 			{
 				$varValue .= $tags[$_rit];
-				
+
 				if (!isset($tags[$_rit+1]))
 					continue;
-					
+
 				$strTag = $tags[$_rit+1];
-				
+
 				$arrTags['((_tag_'.$_rit.'_))'] = '{{'.$strTag.'}}';
-	
+
 				$varValue .= '((_tag_'.$_rit.'_))';
 			}
-			
+
 			$arrJSFix = array();
 			preg_match_all('@(<a.*)( onclick="window.open\(this.href\); return false;")([^>]*>)@', $varValue, $arrMatches);
 			foreach( $arrMatches[0] as $i => $match )
@@ -124,24 +124,26 @@ class HTMLPurifierHelper extends \Backend
 
             // Call purifier here
 			$varValue = $this->objPurifier->purify(\String::restoreBasicEntities($varValue));
+//                        var_dump($this->objPurifier->config);
+//            die();
 
 			if (count($arrJSFix))
 			{
 				$varValue = str_replace(array_keys($arrJSFix), $arrJSFix, $varValue);
 			}
-			
+
 			if (count($arrTags))
 			{
 				$varValue = str_replace(array_keys($arrTags), array_values($arrTags), $varValue);
 			}
-			
+
 			$varValue = str_replace(array('[&nbsp;]', '&nbsp;'), array('[nbsp]', '[nbsp]'), $varValue);
 		}
-		
+
 		return $varValue;
 	}
-	
-	
+
+
 	/**
 	 * Using Hook loadDataContainer, we search for fields to clean
      * This gets injected every time, for any fields using the rte (rich text editor)
@@ -169,8 +171,8 @@ class HTMLPurifierHelper extends \Backend
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Load the HTMLPurifier configuration from database.
 	 */
@@ -211,7 +213,7 @@ class HTMLPurifierHelper extends \Backend
 			foreach( $objConfig->row() as $k => $v )
 			{
 				$strParam = str_replace('_', '.', $k);
-				
+
 				switch( $strParam )
 				{
 					case 'Attr.DefaultTextDir':
@@ -224,13 +226,13 @@ class HTMLPurifierHelper extends \Backend
 						}
 						$varValue = $v;
 						break;
-					
+
 					case 'Attr.AllowedClasses':
 					case 'Attr.ForbiddenClasses':
 					case 'Attr.IDBlacklist':
 					case 'HTML.AllowedAttributes':
 					case 'HTML.ForbiddenAttributes':
-					case 'CSS.AllowedProperties':					
+					case 'CSS.AllowedProperties':
 					case 'CSS.ForbiddenProperties':
 						if (!strlen($v))
 						{
@@ -260,25 +262,39 @@ class HTMLPurifierHelper extends \Backend
 						}
 						$varValue = array_fill_keys(trimsplit(',', $v), true);
 						break;
-					
+
 					case 'rte':
 						$this->rte = $v;
 						continue(2);
-					
+
 					case 'HTML.ForbiddenElements':
 						$arrForbidden = trimsplit(',', $v);
 						$arrTags = array_diff($arrTags, $arrForbidden);
 						continue(2);
-					
+
 					default:
 						continue(2);
 				}
-				
+
 				$arrConfig[$strParam] = $varValue;
-			}
-		}
-		
-		// Clean tags not supported by htmlpurifier
+            }
+        }
+
+        //Update URI.AllowedSchemes to allow tel link (could add git and ...)
+        $arrLinkSchemes = array (
+            'http',
+            'https',
+            'mailto',
+            'ftp',
+            'nntp',
+            'news',
+            'tel',
+        );
+        $arrConfig['URI.AllowedSchemes'] = $arrLinkSchemes;
+        $arrConfig['URI.OverrideAllowedSchemes'] = true;
+
+
+        // Clean tags not supported by htmlpurifier
 		$arrTags = array_diff($arrTags, array(
             'area', 'base', 'button', 'form', 'fieldset', 'input', 'label', 'legend',
             'link', 'map', 'object', 'optgroup', 'option', 'param', 'select', 'style',
@@ -290,7 +306,7 @@ class HTMLPurifierHelper extends \Backend
 		$objConfig = \HTMLPurifier_Config::create($arrConfig);
 		$objConfig->set('HTML.AllowedElements', array_fill_keys($arrTags, true));
 		$objConfig->set('Attr.AllowedFrameTargets', array('_blank'));
-		
+
 		return $objConfig;
 	}
 }

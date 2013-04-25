@@ -17,6 +17,10 @@ This extension implements the [HTML Purifier](http://htmlpurifier.org/) PHP libr
 1. HTML Purifier removes target="_blank" attributes if you set the document type to XHTML 1.0 Strict. If you need the link target, please switch to XHTML 1.0 Transitional.
 
 ## VERSION HISTORY
+
+### 2.1.0 (2013-04-25)
+ * Added URIScheme to allow tel: href in anchors.
+
 ### 2.0.0 (2013-03-14)
  * Updated for Contao 3 compatibility
  * Upgraded HTML Purifier requirement to 4.5.x

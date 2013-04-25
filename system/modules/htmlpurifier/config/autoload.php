@@ -2,9 +2,9 @@
 
 /**
  * Contao Open Source CMS
- * 
+ *
  * Copyright (C) 2005-2013 Leo Feyer
- * 
+ *
  * @package Comments
  * @link    https://contao.org
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
@@ -27,6 +27,7 @@ ClassLoader::addClasses(array
 (
     // Classes
     'Contao\HTMLPurifierHelper'   => 'system/modules/htmlpurifier/classes/HTMLPurifierHelper.php',
+    'Contao\HTMLPurifier_URIScheme_tel'   => 'system/modules/htmlpurifier/classes/HTMLPurifier_URIScheme_tel.php',
 
     // Models
     'Contao\HTMLPurifierModel'    => 'system/modules/htmlpurifier/models/HTMLPurifierModel.php',
