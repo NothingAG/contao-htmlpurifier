@@ -1,3 +1,6 @@
+# [UNMAINTAINED]
+This project is not maintained anymore.
+
 # CONTAO EXTENSION: HTML PURIFIER
 This extension implements the [HTML Purifier](http://htmlpurifier.org/) PHP library, which filters user-submitted HTML framework into Contao's backend. Rich text editors content can then be purified on save.
 
